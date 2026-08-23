@@ -1,0 +1,1358 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\UofC\Semester\Winter 2026\MDCH 740\Assignment\Final Analysis Plan\Supplementary files\Hossain_finalreport.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}14 Apr 2026, 16:24:21
+
+{com}. do "C:\Users\sorif\AppData\Local\Temp\STD00000000.tmp"
+{txt}
+{com}. **** Adjust for Weight using svyset ****
+. 
+. svyset _n [pweight=wts_m], vce(linearized) singleunit(missing)
+
+      {txt}pweight:{col 16}{res}wts_m
+          {txt}VCE:{col 16}{res}linearized
+  {txt}Single unit:{col 16}{res}missing
+     {txt}Strata 1:{col 16}<one>
+         SU 1:{col 16}<observations>
+        FPC 1:{col 16}<zero>
+{p2colreset}{...}
+
+{com}. 
+. 
+. // **** Table 1 **** // 
+. 
+. drop if age==0 // dropped the age groups 12-17 years as this information is not available for every variables***// 
+{txt}(0 observations deleted)
+
+{com}. 
+. 
+. ***** drop all missing values ***************
+. 
+. drop if missing(age, dhh_sex, smoke, mental, stress, educ2, drink_alcohol, cardio)
+{txt}(0 observations deleted)
+
+{com}. 
+. 
+. *********Descriptive statistics for all variables (unweighted)*********
+. 
+. proportion age 
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: age = {res}18 to 34 years
+      {txt}_prop_2: age = {res}35 to 49 years
+      {txt}_prop_3: age = {res}50 to 64 years
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}age          {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .3086243{col 26}{space 2} .0025487{col 37}{space 5} .3036513{col 51}{space 3} .3136421
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .3451855{col 26}{space 2} .0026232{col 37}{space 5} .3400622{col 51}{space 3} .3503451
+{txt}{space 5}_prop_3 {c |}{col 14}{res}{space 2} .3461901{col 26}{space 2}  .002625{col 37}{space 5} .3410632{col 51}{space 3} .3513531
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion dhh_sex
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}dhh_sex      {txt}{c |}
+{space 8}Male {c |}{col 14}{res}{space 2} .4905781{col 26}{space 2} .0027583{col 37}{space 5} .4851731{col 51}{space 3} .4959853
+{txt}{space 6}Female {c |}{col 14}{res}{space 2} .5094219{col 26}{space 2} .0027583{col 37}{space 5} .5040147{col 51}{space 3} .5148269
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion smoke 
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: smoke = {res}smoke (Not at all)
+      {txt}_prop_2: smoke = {res}smoke (Daily/Occasionally)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}smoke        {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2}  .838747{col 26}{space 2} .0020292{col 37}{space 5} .8347301{col 51}{space 3} .8426847
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2}  .161253{col 26}{space 2} .0020292{col 37}{space 5} .1573153{col 51}{space 3} .1652699
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion educ2
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: educ2 = {res}Less than Seconday/secondary
+      {txt}_prop_2: educ2 = {res}Post secondary
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}educ2        {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .1370514{col 26}{space 2} .0018975{col 37}{space 5} .1333745{col 51}{space 3} .1408131
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .8629486{col 26}{space 2} .0018975{col 37}{space 5} .8591869{col 51}{space 3} .8666255
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion mental
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: mental = {res}Perceived Mental Health(Excellen
+      {txt}_prop_2: mental = {res}Poor Mental Health
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}mental       {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .9866054{col 26}{space 2} .0006343{col 37}{space 5} .9853035{col 51}{space 3} .9877933
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .0133946{col 26}{space 2} .0006343{col 37}{space 5} .0122067{col 51}{space 3} .0146965
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion stress
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: stress = {res}Not stressful
+      {txt}_prop_2: stress = {res}Quite a bit stressful
+      {txt}_prop_3: stress = {res}Extreme Stress
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}stress       {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .2691406{col 26}{space 2} .0024471{col 37}{space 5} .2643713{col 51}{space 3} .2739639
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .6810557{col 26}{space 2} .0025715{col 37}{space 5} .6759944{col 51}{space 3} .6860748
+{txt}{space 5}_prop_3 {c |}{col 14}{res}{space 2} .0498036{col 26}{space 2} .0012003{col 37}{space 5}  .047503{col 51}{space 3} .0522096
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion drink_alcohol
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: drink_alcohol = {res}drank (not everyday)
+      {txt}_prop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 15}{c |} Proportion{col 27}   Std. Err.{col 39}     [95% Con{col 52}f. Interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}drink_alcohol {txt}{c |}
+{space 6}_prop_1 {c |}{col 15}{res}{space 2} .9435599{col 27}{space 2} .0012733{col 38}{space 5} .9410117{col 52}{space 3} .9460043
+{txt}{space 6}_prop_2 {c |}{col 15}{res}{space 2} .0564401{col 27}{space 2} .0012733{col 38}{space 5} .0539957{col 52}{space 3} .0589883
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. *********Descriptive statistics for all variables (weighted)*********
+. 
+. proportion age [pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: age = {res}18 to 34 years
+      {txt}_prop_2: age = {res}35 to 49 years
+      {txt}_prop_3: age = {res}50 to 64 years
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}age          {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .3780823{col 26}{space 2} .0046437{col 37}{space 5} .3690244{col 51}{space 3}  .387226
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .3337714{col 26}{space 2} .0042174{col 37}{space 5} .3255568{col 51}{space 3} .3420882
+{txt}{space 5}_prop_3 {c |}{col 14}{res}{space 2} .2881463{col 26}{space 2} .0040707{col 37}{space 5} .2802338{col 51}{space 3} .2961903
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion dhh_sex[pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}dhh_sex      {txt}{c |}
+{space 8}Male {c |}{col 14}{res}{space 2}  .531015{col 26}{space 2} .0045933{col 37}{space 5} .5220027{col 51}{space 3}  .540007
+{txt}{space 6}Female {c |}{col 14}{res}{space 2}  .468985{col 26}{space 2} .0045933{col 37}{space 5}  .459993{col 51}{space 3} .4779973
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion smoke [pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: smoke = {res}smoke (Not at all)
+      {txt}_prop_2: smoke = {res}smoke (Daily/Occasionally)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}smoke        {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .8511277{col 26}{space 2} .0032865{col 37}{space 5} .8445705{col 51}{space 3} .8574549
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .1488723{col 26}{space 2} .0032865{col 37}{space 5} .1425451{col 51}{space 3} .1554295
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion educ2 [pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: educ2 = {res}Less than Seconday/secondary
+      {txt}_prop_2: educ2 = {res}Post secondary
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}educ2        {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .1066506{col 26}{space 2} .0026269{col 37}{space 5}   .10161{col 51}{space 3}   .11191
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .8933494{col 26}{space 2} .0026269{col 37}{space 5}   .88809{col 51}{space 3}   .89839
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion mental [pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: mental = {res}Perceived Mental Health(Excellen
+      {txt}_prop_2: mental = {res}Poor Mental Health
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}mental       {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2}  .986134{col 26}{space 2} .0011983{col 37}{space 5} .9835781{col 51}{space 3} .9882969
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2}  .013866{col 26}{space 2} .0011983{col 37}{space 5} .0117031{col 51}{space 3} .0164219
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion stress [pweight = wts_m]
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: stress = {res}Not stressful
+      {txt}_prop_2: stress = {res}Quite a bit stressful
+      {txt}_prop_3: stress = {res}Extreme Stress
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}stress       {txt}{c |}
+{space 5}_prop_1 {c |}{col 14}{res}{space 2} .2785038{col 26}{space 2} .0042367{col 37}{space 5} .2702762{col 51}{space 3} .2868833
+{txt}{space 5}_prop_2 {c |}{col 14}{res}{space 2} .6767732{col 26}{space 2} .0043685{col 37}{space 5} .6681523{col 51}{space 3} .6852757
+{txt}{space 5}_prop_3 {c |}{col 14}{res}{space 2}  .044723{col 26}{space 2} .0017467{col 37}{space 5} .0414217{col 51}{space 3} .0482742
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion drink_alcohol [pweight = wts_m] 
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: drink_alcohol = {res}drank (not everyday)
+      {txt}_prop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 15}{c |} Proportion{col 27}   Std. Err.{col 39}     [95% Con{col 52}f. Interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}drink_alcohol {txt}{c |}
+{space 6}_prop_1 {c |}{col 15}{res}{space 2} .9464762{col 27}{space 2} .0020761{col 38}{space 5} .9422579{col 52}{space 3} .9504026
+{txt}{space 6}_prop_2 {c |}{col 15}{res}{space 2} .0535238{col 27}{space 2} .0020761{col 38}{space 5} .0495974{col 52}{space 3} .0577421
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. 
+. ******* Key differences between exposure and covariates ***************
+. 
+. *Weights
+. 
+. codebook wts_m
+
+{txt}{hline}
+{res}wts_m{right:WTS_M}
+{txt}{hline}
+
+{col 19}type:  numeric ({res}float{txt})
+
+{col 18}range:  [{res}5.15{txt},{res}10612.56{txt}]{col 55}units:  {res}.01
+{col 10}{txt}unique values:  {res}26,159{col 51}{txt}missing .:  {res}0{txt}/{res}32,849
+
+{txt}{col 19}mean:{res}{col 26} 452.881
+{txt}{col 15}std. dev:{res}{col 26} 609.088
+
+{txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
+{res}{col 27}   66.55{col 37}     126{col 47}  253.52{col 57}  521.32{col 67} 1037.19
+{txt}
+{com}. 
+. proportion age [pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: age = {res}18 to 34 years
+      {txt}_prop_2: age = {res}35 to 49 years
+      {txt}_prop_3: age = {res}50 to 64 years
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_1      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .3891746{col 26}{space 2} .0047901{col 37}{space 5} .3798281{col 51}{space 3} .3986034
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .1819335{col 26}{space 2} .0158311{col 37}{space 5} .1529321{col 51}{space 3} .2150385
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_2      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .3353241{col 26}{space 2} .0043422{col 37}{space 5} .3268674{col 51}{space 3} .3438878
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2}  .306314{col 26}{space 2} .0176555{col 37}{space 5} .2728385{col 51}{space 3} .3419652
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_3      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .2755013{col 26}{space 2} .0041025{col 37}{space 5} .2675334{col 51}{space 3} .2836145
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .5117525{col 26}{space 2} .0199004{col 37}{space 5} .4727546{col 51}{space 3} .5506078
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion dhh_sex[pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+         {txt}Male: dhh_sex = {res}Male
+       {txt}Female: dhh_sex = {res}Female
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}Male         {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .5214722{col 26}{space 2} .0047339{col 37}{space 5} .5121873{col 51}{space 3} .5307423
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .6997619{col 26}{space 2} .0174205{col 37}{space 5} .6645515{col 51}{space 3} .7327627
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}Female       {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .4785278{col 26}{space 2} .0047339{col 37}{space 5} .4692577{col 51}{space 3} .4878127
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .3002381{col 26}{space 2} .0174205{col 37}{space 5} .2672373{col 51}{space 3} .3354485
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion smoke [pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: smoke = {res}smoke (Not at all)
+      {txt}_prop_2: smoke = {res}smoke (Daily/Occasionally)
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_1      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2}  .857143{col 26}{space 2} .0033416{col 37}{space 5} .8504673{col 51}{space 3} .8635684
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .7447574{col 26}{space 2} .0165142{col 37}{space 5} .7110661{col 51}{space 3}  .775759
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_2      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2}  .142857{col 26}{space 2} .0033416{col 37}{space 5} .1364316{col 51}{space 3} .1495327
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .2552426{col 26}{space 2} .0165142{col 37}{space 5}  .224241{col 51}{space 3} .2889339
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion educ2 [pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: educ2 = {res}Less than Seconday/secondary
+      {txt}_prop_2: educ2 = {res}Post secondary
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_1      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .1041761{col 26}{space 2} .0026829{col 37}{space 5} .0990335{col 51}{space 3} .1095532
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .1504077{col 26}{space 2}  .012572{col 37}{space 5} .1273892{col 51}{space 3}  .176743
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_2      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .8958239{col 26}{space 2} .0026829{col 37}{space 5} .8904468{col 51}{space 3} .9009665
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .8495923{col 26}{space 2}  .012572{col 37}{space 5}  .823257{col 51}{space 3} .8726108
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion mental [pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: mental = {res}Perceived Mental Health(Excellen
+      {txt}_prop_2: mental = {res}Poor Mental Health
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_1      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .9862293{col 26}{space 2} .0012269{col 37}{space 5} .9836054{col 51}{space 3} .9884382
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .9844498{col 26}{space 2} .0055237{col 37}{space 5} .9689547{col 51}{space 3} .9922728
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_2      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .0137707{col 26}{space 2} .0012269{col 37}{space 5} .0115618{col 51}{space 3} .0163946
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .0155502{col 26}{space 2} .0055237{col 37}{space 5} .0077272{col 51}{space 3} .0310453
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. proportion stress [pweight = wts_m], over(drink_alcohol)
+{res}
+{txt}Proportion estimation{col 35}Number of obs{col 51}= {res}    32,849
+
+      {txt}_prop_1: stress = {res}Not stressful
+      {txt}_prop_2: stress = {res}Quite a bit stressful
+      {txt}_prop_3: stress = {res}Extreme Stress
+
+    {txt}_subpop_1: drink_alcohol = {res}drank (not everyday)
+    {txt}_subpop_2: drink_alcohol = {res}drank (everyday)
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 1}        Over{col 14}{c |} Proportion{col 26}   Std. Err.{col 38}     [95% Con{col 51}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_1      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .2794046{col 26}{space 2} .0043712{col 37}{space 5} .2709178{col 51}{space 3} .2880522
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .2625738{col 26}{space 2} .0169612{col 37}{space 5} .2307065{col 51}{space 3} .2971427
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_2      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2}  .676598{col 26}{space 2} .0045033{col 37}{space 5} .6677093{col 51}{space 3}  .685361
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2} .6798712{col 26}{space 2} .0178711{col 37}{space 5}  .643879{col 51}{space 3} .7138424
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{res}_prop_3      {txt}{c |}
+{space 3}_subpop_1 {c |}{col 14}{res}{space 2} .0439974{col 26}{space 2} .0017944{col 37}{space 5} .0406113{col 51}{space 3} .0476517
+{txt}{space 3}_subpop_2 {c |}{col 14}{res}{space 2}  .057555{col 26}{space 2} .0076372{col 37}{space 5} .0442897{col 51}{space 3} .0744839
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. 
+. 
+. 
+.  svy: tab age drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+RECODE of {c |}
+dhhgage   {c |}                   drink_alcohol                  
+(DHHGAGE) {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+ 18 to 34 {c |}          {res}0.3892           0.1819           0.3781
+          {txt}{c |} {res}[0.3798,0.3986]  [0.1529,0.2150]  [0.3690,0.3872]
+          {txt}{c |} 
+ 35 to 49 {c |}          {res}0.3353           0.3063           0.3338
+          {txt}{c |} {res}[0.3269,0.3439]  [0.2728,0.3420]  [0.3256,0.3421]
+          {txt}{c |} 
+ 50 to 64 {c |}          {res}0.2755           0.5118           0.2881
+          {txt}{c |} {res}[0.2675,0.2836]  [0.4728,0.5506]  [0.2802,0.2962]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}2{txt}){col 35}= {res} 515.5714
+{txt}{col 5}Design-based{col 19}F({res}1.99{txt}, {res}65333.46{txt}){col 35}= {res}  92.6994{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab dhh_sex drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+          {c |}                   drink_alcohol                  
+  DHH_SEX {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+     Male {c |}          {res}0.5215           0.6998           0.5310
+          {txt}{c |} {res}[0.5122,0.5307]  [0.6646,0.7328]  [0.5220,0.5400]
+          {txt}{c |} 
+   Female {c |}          {res}0.4785           0.3002           0.4690
+          {txt}{c |} {res}[0.4693,0.4878]  [0.2672,0.3354]  [0.4600,0.4780]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res} 212.4054
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  83.2598{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab smoke drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+          {c |}                   drink_alcohol                  
+    smoke {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+ smoke (N {c |}          {res}0.8571           0.7448           0.8511
+          {txt}{c |} {res}[0.8505,0.8636]  [0.7111,0.7758]  [0.8446,0.8575]
+          {txt}{c |} 
+ smoke (D {c |}          {res}0.1429           0.2552           0.1489
+          {txt}{c |} {res}[0.1364,0.1495]  [0.2242,0.2889]  [0.1425,0.1554]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res} 165.8790
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  65.1100{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab stress drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+          {c |}                   drink_alcohol                  
+   stress {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+ Not stre {c |}          {res}0.2794           0.2626           0.2785
+          {txt}{c |} {res}[0.2709,0.2881]  [0.2307,0.2971]  [0.2703,0.2869]
+          {txt}{c |} 
+  Quite a {c |}          {res}0.6766           0.6799           0.6768
+          {txt}{c |} {res}[0.6677,0.6854]  [0.6439,0.7138]  [0.6682,0.6853]
+          {txt}{c |} 
+  Extreme {c |}          {res}0.0440           0.0576           0.0447
+          {txt}{c |} {res}[0.0406,0.0477]  [0.0443,0.0745]  [0.0414,0.0483]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}2{txt}){col 35}= {res}   8.5583
+{txt}{col 5}Design-based{col 19}F({res}1.95{txt}, {res}64020.76{txt}){col 35}= {res}   1.8673{col 51}{txt}P = {res}0.1557
+{txt}
+{com}.  svy: tab mental drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+          {c |}                   drink_alcohol                  
+   mental {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+ Perceive {c |}          {res}0.9862           0.9844           0.9861
+          {txt}{c |} {res}[0.9836,0.9884]  [0.9690,0.9923]  [0.9836,0.9883]
+          {txt}{c |} 
+ Poor Men {c |}          {res}0.0138           0.0156           0.0139
+          {txt}{c |} {res}[0.0116,0.0164]  [0.0077,0.0310]  [0.0117,0.0164]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res}   0.3854
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}   0.1101{col 51}{txt}P = {res}0.7401
+{txt}
+{com}.  svy: tab educ2 drink_alcohol, pear col ci format(%7.4f)
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 50}
+          {c |}                   drink_alcohol                  
+    educ2 {c |}        drank (n         drank (e            Total
+{hline 10}{c +}{hline 50}
+ Less tha {c |}          {res}0.1042           0.1504           0.1067
+          {txt}{c |} {res}[0.0990,0.1096]  [0.1274,0.1767]  [0.1016,0.1119]
+          {txt}{c |} 
+ Post sec {c |}          {res}0.8958           0.8496           0.8933
+          {txt}{c |} {res}[0.8904,0.9010]  [0.8233,0.8726]  [0.8881,0.8984]
+          {txt}{c |} 
+    Total {c |}          {res}1.0000           1.0000           1.0000
+          {txt}{c |}                {res}                                  
+{txt}{hline 10}{c BT}{hline 50}
+  Key:  {col 1}{res}column proportion
+{col 9}[95% confidence interval for column proportion]
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res}  37.3312
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  17.0405{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  
+. **Chi-squre between variables
+.  svy: tab age drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+RECODE of {c |}
+dhhgage   {c |}        drink_alcohol        
+(DHHGAGE) {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+ 18 to 34 {c |}    {res}.3683     .0097     .3781
+ {txt}35 to 49 {c |}    {res}.3174     .0164     .3338
+ {txt}50 to 64 {c |}    {res}.2608     .0274     .2881
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}2{txt}){col 35}= {res} 515.5714
+{txt}{col 5}Design-based{col 19}F({res}1.99{txt}, {res}65333.46{txt}){col 35}= {res}  92.6994{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab dhh_sex drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+          {c |}        drink_alcohol        
+  DHH_SEX {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+     Male {c |}    {res}.4936     .0375      .531
+   {txt}Female {c |}    {res}.4529     .0161      .469
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res} 212.4054
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  83.2598{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab smoke drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+          {c |}        drink_alcohol        
+    smoke {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+ smoke (N {c |}    {res}.8113     .0399     .8511
+ {txt}smoke (D {c |}    {res}.1352     .0137     .1489
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res} 165.8790
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  65.1100{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab educ2 drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+          {c |}        drink_alcohol        
+    educ2 {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+ Less tha {c |}    {res}.0986     .0081     .1067
+ {txt}Post sec {c |}    {res}.8479     .0455     .8933
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res}  37.3312
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}  17.0405{col 51}{txt}P = {res}0.0000
+{txt}
+{com}.  svy: tab mental drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+          {c |}        drink_alcohol        
+   mental {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+ Perceive {c |}    {res}.9334     .0527     .9861
+ {txt}Poor Men {c |}     {res}.013   8.3e-04     .0139
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}1{txt}){col 35}= {res}   0.3854
+{txt}{col 5}Design-based{col 19}F({res}1{txt}, {res}32848{txt}){col 35}= {res}   0.1101{col 51}{txt}P = {res}0.7401
+{txt}
+{com}.  svy: tab stress drink_alcohol
+{txt}(running tabulate on estimation sample)
+{res}
+{txt}{col 1}Number of strata{col 20}= {res}        1{txt}{col 48}Number of obs{col 66}= {res}     32,849
+{txt}{col 1}Number of PSUs{col 20}= {res}   32,849{txt}{col 48}Population size{col 66}={res}  14,876,694
+{txt}{col 48}Design df{col 66}= {res}     32,848
+
+{txt}{hline 10}{c TT}{hline 29}
+          {c |}        drink_alcohol        
+   stress {c |} drank (n  drank (e     Total
+{hline 10}{c +}{hline 29}
+ Not stre {c |}    {res}.2644     .0141     .2785
+  {txt}Quite a {c |}    {res}.6404     .0364     .6768
+  {txt}Extreme {c |}    {res}.0416     .0031     .0447
+          {txt}{c |} 
+    Total {c |}    {res}.9465     .0535         1
+{txt}{hline 10}{c BT}{hline 29}
+  Key:  {col 1}{res}cell proportion
+
+{txt}  Pearson:
+{col 5}Uncorrected{col 19}chi2({res}2{txt}){col 35}= {res}   8.5583
+{txt}{col 5}Design-based{col 19}F({res}1.95{txt}, {res}64020.76{txt}){col 35}= {res}   1.8673{col 51}{txt}P = {res}0.1557
+{txt}
+{com}. 
+. 
+. 
+. ********************* Fitting the Full model ******************************************
+. // After that consider the backward elimination procedures //
+. 
+. **** Assessing confounding for variable (Age) ****
+. 
+. logit cardio i.drink_alcohol i.smoke i.age i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8584}  
+Iteration 2:{space 3}log likelihood = {res:-2116.6431}  
+Iteration 3:{space 3}log likelihood = {res:-2116.1145}  
+Iteration 4:{space 3}log likelihood = {res: -2116.114}  
+Iteration 5:{space 3}log likelihood = {res: -2116.114}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}    394.15
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res} -2116.114{txt}{col 49}Pseudo R2{col 67}= {res}    0.0852
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                     cardio{col 29}{c |} Odds Ratio{col 41}   Std. Err.{col 53}      z{col 61}   P>|z|{col 69}     [95% Con{col 82}f. Interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}drink_alcohol {c |}
+{space 10}drank (everyday)  {c |}{col 29}{res}{space 2} 1.093564{col 41}{space 2}  .184446{col 52}{space 1}    0.53{col 61}{space 3}0.596{col 69}{space 4} .7857358{col 82}{space 3} 1.521991
+{txt}{space 27} {c |}
+{space 22}smoke {c |}
+smoke (Daily/Occasionally)  {c |}{col 29}{res}{space 2}  .891856{col 41}{space 2} .1222798{col 52}{space 1}   -0.83{col 61}{space 3}0.404{col 69}{space 4} .6816933{col 82}{space 3} 1.166811
+{txt}{space 27} {c |}
+{space 24}age {c |}
+{space 12}35 to 49 years  {c |}{col 29}{res}{space 2} 1.445046{col 41}{space 2} .2841358{col 52}{space 1}    1.87{col 61}{space 3}0.061{col 69}{space 4} .9829061{col 82}{space 3} 2.124474
+{txt}{space 12}50 to 64 years  {c |}{col 29}{res}{space 2} 7.002379{col 41}{space 2} 1.158887{col 52}{space 1}   11.76{col 61}{space 3}0.000{col 69}{space 4} 5.062588{col 82}{space 3} 9.685426
+{txt}{space 27} {c |}
+{space 20}dhh_sex {c |}
+{space 20}Female  {c |}{col 29}{res}{space 2} .3690264{col 41}{space 2} .0399984{col 52}{space 1}   -9.20{col 61}{space 3}0.000{col 69}{space 4} .2983985{col 82}{space 3} .4563712
+{txt}{space 27} {c |}
+{space 22}educ2 {c |}
+{space 12}Post secondary  {c |}{col 29}{res}{space 2}  1.17195{col 41}{space 2}  .160997{col 52}{space 1}    1.16{col 61}{space 3}0.248{col 69}{space 4} .8953131{col 82}{space 3} 1.534063
+{txt}{space 27} {c |}
+{space 21}mental {c |}
+{space 8}Poor Mental Health  {c |}{col 29}{res}{space 2}   1.4173{col 41}{space 2} .5541105{col 52}{space 1}    0.89{col 61}{space 3}0.372{col 69}{space 4} .6586794{col 82}{space 3} 3.049645
+{txt}{space 27} {c |}
+{space 21}stress {c |}
+{space 5}Quite a bit stressful  {c |}{col 29}{res}{space 2} 1.147599{col 41}{space 2} .1305981{col 52}{space 1}    1.21{col 61}{space 3}0.226{col 69}{space 4} .9181686{col 82}{space 3} 1.434359
+{txt}{space 12}Extreme Stress  {c |}{col 29}{res}{space 2} 1.147959{col 41}{space 2} .2743716{col 52}{space 1}    0.58{col 61}{space 3}0.564{col 69}{space 4} .7185922{col 82}{space 3} 1.833879
+{txt}{space 27} {c |}
+{space 22}_cons {c |}{col 29}{res}{space 2} .0049234{col 41}{space 2} .0010601{col 52}{space 1}  -24.68{col 61}{space 3}0.000{col 69}{space 4} .0032284{col 82}{space 3} .0075083
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.smoke i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2263.9809}  
+Iteration 2:{space 3}log likelihood = {res:-2260.3347}  
+Iteration 3:{space 3}log likelihood = {res:-2260.3256}  
+Iteration 4:{space 3}log likelihood = {res:-2260.3256}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}7{txt}){col 67}= {res}    105.73
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2260.3256{txt}{col 49}Pseudo R2{col 67}= {res}    0.0229
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                     cardio{col 29}{c |} Odds Ratio{col 41}   Std. Err.{col 53}      z{col 61}   P>|z|{col 69}     [95% Con{col 82}f. Interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}drink_alcohol {c |}
+{space 10}drank (everyday)  {c |}{col 29}{res}{space 2} 1.519824{col 41}{space 2} .2545128{col 52}{space 1}    2.50{col 61}{space 3}0.012{col 69}{space 4} 1.094585{col 82}{space 3} 2.110266
+{txt}{space 27} {c |}
+{space 22}smoke {c |}
+smoke (Daily/Occasionally)  {c |}{col 29}{res}{space 2} .8080297{col 41}{space 2} .1104171{col 52}{space 1}   -1.56{col 61}{space 3}0.119{col 69}{space 4}  .618174{col 82}{space 3} 1.056194
+{txt}{space 27} {c |}
+{space 20}dhh_sex {c |}
+{space 20}Female  {c |}{col 29}{res}{space 2} .3714906{col 41}{space 2} .0401789{col 52}{space 1}   -9.16{col 61}{space 3}0.000{col 69}{space 4} .3005283{col 82}{space 3}  .459209
+{txt}{space 27} {c |}
+{space 22}educ2 {c |}
+{space 12}Post secondary  {c |}{col 29}{res}{space 2} .9217031{col 41}{space 2} .1258201{col 52}{space 1}   -0.60{col 61}{space 3}0.550{col 69}{space 4} .7053344{col 82}{space 3} 1.204445
+{txt}{space 27} {c |}
+{space 21}mental {c |}
+{space 8}Poor Mental Health  {c |}{col 29}{res}{space 2} 1.294856{col 41}{space 2} .5018264{col 52}{space 1}    0.67{col 61}{space 3}0.505{col 69}{space 4} .6058081{col 82}{space 3} 2.767629
+{txt}{space 27} {c |}
+{space 21}stress {c |}
+{space 5}Quite a bit stressful  {c |}{col 29}{res}{space 2} 1.158327{col 41}{space 2} .1310111{col 52}{space 1}    1.30{col 61}{space 3}0.194{col 69}{space 4} .9280193{col 82}{space 3}  1.44579
+{txt}{space 12}Extreme Stress  {c |}{col 29}{res}{space 2} 1.224702{col 41}{space 2} .2909272{col 52}{space 1}    0.85{col 61}{space 3}0.394{col 69}{space 4} .7688256{col 82}{space 3}  1.95089
+{txt}{space 27} {c |}
+{space 22}_cons {c |}{col 29}{res}{space 2} .0189582{col 41}{space 2} .0029332{col 52}{space 1}  -25.63{col 61}{space 3}0.000{col 69}{space 4} .0139991{col 82}{space 3} .0256742
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. **** Assessing confounding for variable (Sex)****
+. 
+. logit cardio i.drink_alcohol i.smoke i.age i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8584}  
+Iteration 2:{space 3}log likelihood = {res:-2116.6431}  
+Iteration 3:{space 3}log likelihood = {res:-2116.1145}  
+Iteration 4:{space 3}log likelihood = {res: -2116.114}  
+Iteration 5:{space 3}log likelihood = {res: -2116.114}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}    394.15
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res} -2116.114{txt}{col 49}Pseudo R2{col 67}= {res}    0.0852
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                     cardio{col 29}{c |} Odds Ratio{col 41}   Std. Err.{col 53}      z{col 61}   P>|z|{col 69}     [95% Con{col 82}f. Interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}drink_alcohol {c |}
+{space 10}drank (everyday)  {c |}{col 29}{res}{space 2} 1.093564{col 41}{space 2}  .184446{col 52}{space 1}    0.53{col 61}{space 3}0.596{col 69}{space 4} .7857358{col 82}{space 3} 1.521991
+{txt}{space 27} {c |}
+{space 22}smoke {c |}
+smoke (Daily/Occasionally)  {c |}{col 29}{res}{space 2}  .891856{col 41}{space 2} .1222798{col 52}{space 1}   -0.83{col 61}{space 3}0.404{col 69}{space 4} .6816933{col 82}{space 3} 1.166811
+{txt}{space 27} {c |}
+{space 24}age {c |}
+{space 12}35 to 49 years  {c |}{col 29}{res}{space 2} 1.445046{col 41}{space 2} .2841358{col 52}{space 1}    1.87{col 61}{space 3}0.061{col 69}{space 4} .9829061{col 82}{space 3} 2.124474
+{txt}{space 12}50 to 64 years  {c |}{col 29}{res}{space 2} 7.002379{col 41}{space 2} 1.158887{col 52}{space 1}   11.76{col 61}{space 3}0.000{col 69}{space 4} 5.062588{col 82}{space 3} 9.685426
+{txt}{space 27} {c |}
+{space 20}dhh_sex {c |}
+{space 20}Female  {c |}{col 29}{res}{space 2} .3690264{col 41}{space 2} .0399984{col 52}{space 1}   -9.20{col 61}{space 3}0.000{col 69}{space 4} .2983985{col 82}{space 3} .4563712
+{txt}{space 27} {c |}
+{space 22}educ2 {c |}
+{space 12}Post secondary  {c |}{col 29}{res}{space 2}  1.17195{col 41}{space 2}  .160997{col 52}{space 1}    1.16{col 61}{space 3}0.248{col 69}{space 4} .8953131{col 82}{space 3} 1.534063
+{txt}{space 27} {c |}
+{space 21}mental {c |}
+{space 8}Poor Mental Health  {c |}{col 29}{res}{space 2}   1.4173{col 41}{space 2} .5541105{col 52}{space 1}    0.89{col 61}{space 3}0.372{col 69}{space 4} .6586794{col 82}{space 3} 3.049645
+{txt}{space 27} {c |}
+{space 21}stress {c |}
+{space 5}Quite a bit stressful  {c |}{col 29}{res}{space 2} 1.147599{col 41}{space 2} .1305981{col 52}{space 1}    1.21{col 61}{space 3}0.226{col 69}{space 4} .9181686{col 82}{space 3} 1.434359
+{txt}{space 12}Extreme Stress  {c |}{col 29}{res}{space 2} 1.147959{col 41}{space 2} .2743716{col 52}{space 1}    0.58{col 61}{space 3}0.564{col 69}{space 4} .7185922{col 82}{space 3} 1.833879
+{txt}{space 27} {c |}
+{space 22}_cons {c |}{col 29}{res}{space 2} .0049234{col 41}{space 2} .0010601{col 52}{space 1}  -24.68{col 61}{space 3}0.000{col 69}{space 4} .0032284{col 82}{space 3} .0075083
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.smoke i.age i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2198.7484}  
+Iteration 2:{space 3}log likelihood = {res:-2163.2495}  
+Iteration 3:{space 3}log likelihood = {res:-2163.1064}  
+Iteration 4:{space 3}log likelihood = {res:-2163.1063}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}    300.17
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2163.1063{txt}{col 49}Pseudo R2{col 67}= {res}    0.0649
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                     cardio{col 29}{c |} Odds Ratio{col 41}   Std. Err.{col 53}      z{col 61}   P>|z|{col 69}     [95% Con{col 82}f. Interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}drink_alcohol {c |}
+{space 10}drank (everyday)  {c |}{col 29}{res}{space 2} 1.253985{col 41}{space 2} .2106462{col 52}{space 1}    1.35{col 61}{space 3}0.178{col 69}{space 4} .9022071{col 82}{space 3} 1.742924
+{txt}{space 27} {c |}
+{space 22}smoke {c |}
+smoke (Daily/Occasionally)  {c |}{col 29}{res}{space 2} .9610087{col 41}{space 2} .1315123{col 52}{space 1}   -0.29{col 61}{space 3}0.771{col 69}{space 4} .7349231{col 82}{space 3} 1.256645
+{txt}{space 27} {c |}
+{space 24}age {c |}
+{space 12}35 to 49 years  {c |}{col 29}{res}{space 2} 1.451217{col 41}{space 2} .2851843{col 52}{space 1}    1.90{col 61}{space 3}0.058{col 69}{space 4} .9873239{col 82}{space 3} 2.133071
+{txt}{space 12}50 to 64 years  {c |}{col 29}{res}{space 2} 6.996792{col 41}{space 2} 1.157515{col 52}{space 1}   11.76{col 61}{space 3}0.000{col 69}{space 4} 5.059183{col 82}{space 3} 9.676483
+{txt}{space 27} {c |}
+{space 22}educ2 {c |}
+{space 12}Post secondary  {c |}{col 29}{res}{space 2} 1.141514{col 41}{space 2} .1566822{col 52}{space 1}    0.96{col 61}{space 3}0.335{col 69}{space 4} .8722613{col 82}{space 3} 1.493879
+{txt}{space 27} {c |}
+{space 21}mental {c |}
+{space 8}Poor Mental Health  {c |}{col 29}{res}{space 2} 1.385666{col 41}{space 2} .5390554{col 52}{space 1}    0.84{col 61}{space 3}0.402{col 69}{space 4} .6464307{col 82}{space 3} 2.970265
+{txt}{space 27} {c |}
+{space 21}stress {c |}
+{space 5}Quite a bit stressful  {c |}{col 29}{res}{space 2} 1.116438{col 41}{space 2} .1267645{col 52}{space 1}    0.97{col 61}{space 3}0.332{col 69}{space 4} .8936879{col 82}{space 3} 1.394707
+{txt}{space 12}Extreme Stress  {c |}{col 29}{res}{space 2} 1.004787{col 41}{space 2} .2388549{col 52}{space 1}    0.02{col 61}{space 3}0.984{col 69}{space 4} .6305637{col 82}{space 3} 1.601102
+{txt}{space 27} {c |}
+{space 22}_cons {c |}{col 29}{res}{space 2} .0034156{col 41}{space 2} .0007291{col 52}{space 1}  -26.61{col 61}{space 3}0.000{col 69}{space 4} .0022479{col 82}{space 3} .0051898
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **** Assessing confounding for variable (Smoking status)****
+. 
+. logit cardio i.drink_alcohol i.smoke i.age i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8584}  
+Iteration 2:{space 3}log likelihood = {res:-2116.6431}  
+Iteration 3:{space 3}log likelihood = {res:-2116.1145}  
+Iteration 4:{space 3}log likelihood = {res: -2116.114}  
+Iteration 5:{space 3}log likelihood = {res: -2116.114}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}    394.15
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res} -2116.114{txt}{col 49}Pseudo R2{col 67}= {res}    0.0852
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                     cardio{col 29}{c |} Odds Ratio{col 41}   Std. Err.{col 53}      z{col 61}   P>|z|{col 69}     [95% Con{col 82}f. Interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 14}drink_alcohol {c |}
+{space 10}drank (everyday)  {c |}{col 29}{res}{space 2} 1.093564{col 41}{space 2}  .184446{col 52}{space 1}    0.53{col 61}{space 3}0.596{col 69}{space 4} .7857358{col 82}{space 3} 1.521991
+{txt}{space 27} {c |}
+{space 22}smoke {c |}
+smoke (Daily/Occasionally)  {c |}{col 29}{res}{space 2}  .891856{col 41}{space 2} .1222798{col 52}{space 1}   -0.83{col 61}{space 3}0.404{col 69}{space 4} .6816933{col 82}{space 3} 1.166811
+{txt}{space 27} {c |}
+{space 24}age {c |}
+{space 12}35 to 49 years  {c |}{col 29}{res}{space 2} 1.445046{col 41}{space 2} .2841358{col 52}{space 1}    1.87{col 61}{space 3}0.061{col 69}{space 4} .9829061{col 82}{space 3} 2.124474
+{txt}{space 12}50 to 64 years  {c |}{col 29}{res}{space 2} 7.002379{col 41}{space 2} 1.158887{col 52}{space 1}   11.76{col 61}{space 3}0.000{col 69}{space 4} 5.062588{col 82}{space 3} 9.685426
+{txt}{space 27} {c |}
+{space 20}dhh_sex {c |}
+{space 20}Female  {c |}{col 29}{res}{space 2} .3690264{col 41}{space 2} .0399984{col 52}{space 1}   -9.20{col 61}{space 3}0.000{col 69}{space 4} .2983985{col 82}{space 3} .4563712
+{txt}{space 27} {c |}
+{space 22}educ2 {c |}
+{space 12}Post secondary  {c |}{col 29}{res}{space 2}  1.17195{col 41}{space 2}  .160997{col 52}{space 1}    1.16{col 61}{space 3}0.248{col 69}{space 4} .8953131{col 82}{space 3} 1.534063
+{txt}{space 27} {c |}
+{space 21}mental {c |}
+{space 8}Poor Mental Health  {c |}{col 29}{res}{space 2}   1.4173{col 41}{space 2} .5541105{col 52}{space 1}    0.89{col 61}{space 3}0.372{col 69}{space 4} .6586794{col 82}{space 3} 3.049645
+{txt}{space 27} {c |}
+{space 21}stress {c |}
+{space 5}Quite a bit stressful  {c |}{col 29}{res}{space 2} 1.147599{col 41}{space 2} .1305981{col 52}{space 1}    1.21{col 61}{space 3}0.226{col 69}{space 4} .9181686{col 82}{space 3} 1.434359
+{txt}{space 12}Extreme Stress  {c |}{col 29}{res}{space 2} 1.147959{col 41}{space 2} .2743716{col 52}{space 1}    0.58{col 61}{space 3}0.564{col 69}{space 4} .7185922{col 82}{space 3} 1.833879
+{txt}{space 27} {c |}
+{space 22}_cons {c |}{col 29}{res}{space 2} .0049234{col 41}{space 2} .0010601{col 52}{space 1}  -24.68{col 61}{space 3}0.000{col 69}{space 4} .0032284{col 82}{space 3} .0075083
+{txt}{hline 28}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8558}  
+Iteration 2:{space 3}log likelihood = {res:-2116.9936}  
+Iteration 3:{space 3}log likelihood = {res:-2116.4713}  
+Iteration 4:{space 3}log likelihood = {res:-2116.4708}  
+Iteration 5:{space 3}log likelihood = {res:-2116.4708}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}    393.44
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2116.4708{txt}{col 49}Pseudo R2{col 67}= {res}    0.0850
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2} 1.082781{col 36}{space 2} .1821827{col 47}{space 1}    0.47{col 56}{space 3}0.636{col 64}{space 4} .7786143{col 77}{space 3} 1.505772
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.446304{col 36}{space 2} .2843722{col 47}{space 1}    1.88{col 56}{space 3}0.061{col 64}{space 4} .9837763{col 77}{space 3} 2.126292
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 7.029978{col 36}{space 2} 1.162945{col 47}{space 1}   11.79{col 56}{space 3}0.000{col 64}{space 4} 5.083263{col 77}{space 3} 9.722217
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2} .3707799{col 36}{space 2} .0401361{col 47}{space 1}   -9.17{col 56}{space 3}0.000{col 64}{space 4} .2998993{col 77}{space 3}  .458413
+{txt}{space 22} {c |}
+{space 17}educ2 {c |}
+{space 7}Post secondary  {c |}{col 24}{res}{space 2} 1.188413{col 36}{space 2} .1621091{col 47}{space 1}    1.27{col 56}{space 3}0.206{col 64}{space 4} .9096131{col 77}{space 3} 1.552666
+{txt}{space 22} {c |}
+{space 16}mental {c |}
+{space 3}Poor Mental Health  {c |}{col 24}{res}{space 2} 1.403104{col 36}{space 2} .5482517{col 47}{space 1}    0.87{col 56}{space 3}0.386{col 64}{space 4} .6523636{col 77}{space 3} 3.017798
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.149925{col 36}{space 2} .1308341{col 47}{space 1}    1.23{col 56}{space 3}0.220{col 64}{space 4} .9200743{col 77}{space 3} 1.437196
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2} 1.146146{col 36}{space 2} .2738947{col 47}{space 1}    0.57{col 56}{space 3}0.568{col 64}{space 4} .7175107{col 77}{space 3} 1.830846
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0047555{col 36}{space 2}  .001006{col 47}{space 1}  -25.28{col 56}{space 3}0.000{col 64}{space 4} .0031415{col 77}{space 3} .0071989
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **** Assessing confounding for variable (mental health)****
+. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.educ2 i.mental i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8558}  
+Iteration 2:{space 3}log likelihood = {res:-2116.9936}  
+Iteration 3:{space 3}log likelihood = {res:-2116.4713}  
+Iteration 4:{space 3}log likelihood = {res:-2116.4708}  
+Iteration 5:{space 3}log likelihood = {res:-2116.4708}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}    393.44
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2116.4708{txt}{col 49}Pseudo R2{col 67}= {res}    0.0850
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2} 1.082781{col 36}{space 2} .1821827{col 47}{space 1}    0.47{col 56}{space 3}0.636{col 64}{space 4} .7786143{col 77}{space 3} 1.505772
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.446304{col 36}{space 2} .2843722{col 47}{space 1}    1.88{col 56}{space 3}0.061{col 64}{space 4} .9837763{col 77}{space 3} 2.126292
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 7.029978{col 36}{space 2} 1.162945{col 47}{space 1}   11.79{col 56}{space 3}0.000{col 64}{space 4} 5.083263{col 77}{space 3} 9.722217
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2} .3707799{col 36}{space 2} .0401361{col 47}{space 1}   -9.17{col 56}{space 3}0.000{col 64}{space 4} .2998993{col 77}{space 3}  .458413
+{txt}{space 22} {c |}
+{space 17}educ2 {c |}
+{space 7}Post secondary  {c |}{col 24}{res}{space 2} 1.188413{col 36}{space 2} .1621091{col 47}{space 1}    1.27{col 56}{space 3}0.206{col 64}{space 4} .9096131{col 77}{space 3} 1.552666
+{txt}{space 22} {c |}
+{space 16}mental {c |}
+{space 3}Poor Mental Health  {c |}{col 24}{res}{space 2} 1.403104{col 36}{space 2} .5482517{col 47}{space 1}    0.87{col 56}{space 3}0.386{col 64}{space 4} .6523636{col 77}{space 3} 3.017798
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.149925{col 36}{space 2} .1308341{col 47}{space 1}    1.23{col 56}{space 3}0.220{col 64}{space 4} .9200743{col 77}{space 3} 1.437196
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2} 1.146146{col 36}{space 2} .2738947{col 47}{space 1}    0.57{col 56}{space 3}0.568{col 64}{space 4} .7175107{col 77}{space 3} 1.830846
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0047555{col 36}{space 2}  .001006{col 47}{space 1}  -25.28{col 56}{space 3}0.000{col 64}{space 4} .0031415{col 77}{space 3} .0071989
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.educ2  i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8668}  
+Iteration 2:{space 3}log likelihood = {res:-2117.3277}  
+Iteration 3:{space 3}log likelihood = {res:-2116.8121}  
+Iteration 4:{space 3}log likelihood = {res:-2116.8116}  
+Iteration 5:{space 3}log likelihood = {res:-2116.8116}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}7{txt}){col 67}= {res}    392.76
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2116.8116{txt}{col 49}Pseudo R2{col 67}= {res}    0.0849
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2} 1.083562{col 36}{space 2} .1823081{col 47}{space 1}    0.48{col 56}{space 3}0.633{col 64}{space 4} .7791842{col 77}{space 3} 1.506841
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.443103{col 36}{space 2} .2837104{col 47}{space 1}    1.87{col 56}{space 3}0.062{col 64}{space 4}  .981642{col 77}{space 3} 2.121492
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 7.015131{col 36}{space 2}  1.16035{col 47}{space 1}   11.78{col 56}{space 3}0.000{col 64}{space 4} 5.072725{col 77}{space 3} 9.701308
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2}  .370862{col 36}{space 2} .0401477{col 47}{space 1}   -9.16{col 56}{space 3}0.000{col 64}{space 4} .2999615{col 77}{space 3} .4585209
+{txt}{space 22} {c |}
+{space 17}educ2 {c |}
+{space 7}Post secondary  {c |}{col 24}{res}{space 2} 1.185664{col 36}{space 2} .1616889{col 47}{space 1}    1.25{col 56}{space 3}0.212{col 64}{space 4} .9075772{col 77}{space 3} 1.548959
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.150375{col 36}{space 2} .1308804{col 47}{space 1}    1.23{col 56}{space 3}0.218{col 64}{space 4} .9204422{col 77}{space 3} 1.437746
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2}  1.16791{col 36}{space 2}   .27755{col 47}{space 1}    0.65{col 56}{space 3}0.514{col 64}{space 4} .7330335{col 77}{space 3} 1.860778
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0047898{col 36}{space 2} .0010122{col 47}{space 1}  -25.28{col 56}{space 3}0.000{col 64}{space 4} .0031655{col 77}{space 3} .0072475
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. **** Assessing confounding for variable (education level)****
+. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.educ2  i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8668}  
+Iteration 2:{space 3}log likelihood = {res:-2117.3277}  
+Iteration 3:{space 3}log likelihood = {res:-2116.8121}  
+Iteration 4:{space 3}log likelihood = {res:-2116.8116}  
+Iteration 5:{space 3}log likelihood = {res:-2116.8116}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}7{txt}){col 67}= {res}    392.76
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2116.8116{txt}{col 49}Pseudo R2{col 67}= {res}    0.0849
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2} 1.083562{col 36}{space 2} .1823081{col 47}{space 1}    0.48{col 56}{space 3}0.633{col 64}{space 4} .7791842{col 77}{space 3} 1.506841
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.443103{col 36}{space 2} .2837104{col 47}{space 1}    1.87{col 56}{space 3}0.062{col 64}{space 4}  .981642{col 77}{space 3} 2.121492
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 7.015131{col 36}{space 2}  1.16035{col 47}{space 1}   11.78{col 56}{space 3}0.000{col 64}{space 4} 5.072725{col 77}{space 3} 9.701308
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2}  .370862{col 36}{space 2} .0401477{col 47}{space 1}   -9.16{col 56}{space 3}0.000{col 64}{space 4} .2999615{col 77}{space 3} .4585209
+{txt}{space 22} {c |}
+{space 17}educ2 {c |}
+{space 7}Post secondary  {c |}{col 24}{res}{space 2} 1.185664{col 36}{space 2} .1616889{col 47}{space 1}    1.25{col 56}{space 3}0.212{col 64}{space 4} .9075772{col 77}{space 3} 1.548959
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.150375{col 36}{space 2} .1308804{col 47}{space 1}    1.23{col 56}{space 3}0.218{col 64}{space 4} .9204422{col 77}{space 3} 1.437746
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2}  1.16791{col 36}{space 2}   .27755{col 47}{space 1}    0.65{col 56}{space 3}0.514{col 64}{space 4} .7330335{col 77}{space 3} 1.860778
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0047898{col 36}{space 2} .0010122{col 47}{space 1}  -25.28{col 56}{space 3}0.000{col 64}{space 4} .0031655{col 77}{space 3} .0072475
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8644}  
+Iteration 2:{space 3}log likelihood = {res:-2118.1185}  
+Iteration 3:{space 3}log likelihood = {res:-2117.6206}  
+Iteration 4:{space 3}log likelihood = {res:-2117.6202}  
+Iteration 5:{space 3}log likelihood = {res:-2117.6202}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}6{txt}){col 67}= {res}    391.14
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2117.6202{txt}{col 49}Pseudo R2{col 67}= {res}    0.0845
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2}  1.07496{col 36}{space 2} .1807424{col 47}{space 1}    0.43{col 56}{space 3}0.667{col 64}{space 4} .7731648{col 77}{space 3} 1.494556
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.449561{col 36}{space 2} .2849367{col 47}{space 1}    1.89{col 56}{space 3}0.059{col 64}{space 4} .9860928{col 77}{space 3} 2.130861
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 6.945778{col 36}{space 2} 1.147648{col 47}{space 1}   11.73{col 56}{space 3}0.000{col 64}{space 4}  5.02432{col 77}{space 3} 9.602063
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2} .3721399{col 36}{space 2} .0402751{col 47}{space 1}   -9.13{col 56}{space 3}0.000{col 64}{space 4} .3010124{col 77}{space 3} .4600744
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.159387{col 36}{space 2} .1317192{col 47}{space 1}    1.30{col 56}{space 3}0.193{col 64}{space 4} .9279455{col 77}{space 3} 1.448553
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2} 1.175558{col 36}{space 2} .2792863{col 47}{space 1}    0.68{col 56}{space 3}0.496{col 64}{space 4} .7379339{col 77}{space 3}  1.87271
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0055274{col 36}{space 2} .0009759{col 47}{space 1}  -29.44{col 56}{space 3}0.000{col 64}{space 4} .0039105{col 77}{space 3} .0078127
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **** Assessing confounding for variable (Stress in Work)****
+. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex i.stress, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2173.8644}  
+Iteration 2:{space 3}log likelihood = {res:-2118.1185}  
+Iteration 3:{space 3}log likelihood = {res:-2117.6206}  
+Iteration 4:{space 3}log likelihood = {res:-2117.6202}  
+Iteration 5:{space 3}log likelihood = {res:-2117.6202}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}6{txt}){col 67}= {res}    391.14
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2117.6202{txt}{col 49}Pseudo R2{col 67}= {res}    0.0845
+
+{txt}{hline 23}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                cardio{col 24}{c |} Odds Ratio{col 36}   Std. Err.{col 48}      z{col 56}   P>|z|{col 64}     [95% Con{col 77}f. Interval]
+{hline 23}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}drink_alcohol {c |}
+{space 5}drank (everyday)  {c |}{col 24}{res}{space 2}  1.07496{col 36}{space 2} .1807424{col 47}{space 1}    0.43{col 56}{space 3}0.667{col 64}{space 4} .7731648{col 77}{space 3} 1.494556
+{txt}{space 22} {c |}
+{space 19}age {c |}
+{space 7}35 to 49 years  {c |}{col 24}{res}{space 2} 1.449561{col 36}{space 2} .2849367{col 47}{space 1}    1.89{col 56}{space 3}0.059{col 64}{space 4} .9860928{col 77}{space 3} 2.130861
+{txt}{space 7}50 to 64 years  {c |}{col 24}{res}{space 2} 6.945778{col 36}{space 2} 1.147648{col 47}{space 1}   11.73{col 56}{space 3}0.000{col 64}{space 4}  5.02432{col 77}{space 3} 9.602063
+{txt}{space 22} {c |}
+{space 15}dhh_sex {c |}
+{space 15}Female  {c |}{col 24}{res}{space 2} .3721399{col 36}{space 2} .0402751{col 47}{space 1}   -9.13{col 56}{space 3}0.000{col 64}{space 4} .3010124{col 77}{space 3} .4600744
+{txt}{space 22} {c |}
+{space 16}stress {c |}
+Quite a bit stressful  {c |}{col 24}{res}{space 2} 1.159387{col 36}{space 2} .1317192{col 47}{space 1}    1.30{col 56}{space 3}0.193{col 64}{space 4} .9279455{col 77}{space 3} 1.448553
+{txt}{space 7}Extreme Stress  {c |}{col 24}{res}{space 2} 1.175558{col 36}{space 2} .2792863{col 47}{space 1}    0.68{col 56}{space 3}0.496{col 64}{space 4} .7379339{col 77}{space 3}  1.87271
+{txt}{space 22} {c |}
+{space 17}_cons {c |}{col 24}{res}{space 2} .0055274{col 36}{space 2} .0009759{col 47}{space 1}  -29.44{col 56}{space 3}0.000{col 64}{space 4} .0039105{col 77}{space 3} .0078127
+{txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2174.2247}  
+Iteration 2:{space 3}log likelihood = {res:-2119.0033}  
+Iteration 3:{space 3}log likelihood = {res:-2118.5156}  
+Iteration 4:{space 3}log likelihood = {res:-2118.5152}  
+Iteration 5:{space 3}log likelihood = {res:-2118.5152}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}    389.35
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2118.5152{txt}{col 49}Pseudo R2{col 67}= {res}    0.0842
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           cardio{col 19}{c |} Odds Ratio{col 31}   Std. Err.{col 43}      z{col 51}   P>|z|{col 59}     [95% Con{col 72}f. Interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}drink_alcohol {c |}
+drank (everyday)  {c |}{col 19}{res}{space 2} 1.073219{col 31}{space 2} .1804567{col 42}{space 1}    0.42{col 51}{space 3}0.674{col 59}{space 4} .7719031{col 72}{space 3} 1.492155
+{txt}{space 17} {c |}
+{space 14}age {c |}
+{space 2}35 to 49 years  {c |}{col 19}{res}{space 2}  1.46821{col 31}{space 2} .2882573{col 42}{space 1}    1.96{col 51}{space 3}0.050{col 59}{space 4} .9992399{col 72}{space 3} 2.157281
+{txt}{space 2}50 to 64 years  {c |}{col 19}{res}{space 2} 6.991552{col 31}{space 2} 1.154649{col 42}{space 1}   11.78{col 51}{space 3}0.000{col 59}{space 4} 5.058228{col 72}{space 3} 9.663818
+{txt}{space 17} {c |}
+{space 10}dhh_sex {c |}
+{space 10}Female  {c |}{col 19}{res}{space 2} .3739639{col 31}{space 2}  .040408{col 42}{space 1}   -9.10{col 51}{space 3}0.000{col 59}{space 4}   .30259{col 72}{space 3} .4621732
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} .0061186{col 31}{space 2} .0009662{col 42}{space 1}  -32.27{col 51}{space 3}0.000{col 59}{space 4} .0044899{col 72}{space 3}  .008338
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. 
+. ********************* Table 2***************************************
+. 
+. // Crude estimate //
+. 
+. logit cardio drink_alcohol, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2308.7225}  
+Iteration 2:{space 3}log likelihood = {res:-2308.2028}  
+Iteration 3:{space 3}log likelihood = {res:-2308.2018}  
+Iteration 4:{space 3}log likelihood = {res:-2308.2018}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}1{txt}){col 67}= {res}      9.98
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0016
+{txt}Log likelihood = {res}-2308.2018{txt}{col 49}Pseudo R2{col 67}= {res}    0.0022
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       cardio{col 15}{c |} Odds Ratio{col 27}   Std. Err.{col 39}      z{col 47}   P>|z|{col 55}     [95% Con{col 68}f. Interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+drink_alcohol {c |}{col 15}{res}{space 2} 1.756403{col 27}{space 2} .2913334{col 38}{space 1}    3.40{col 47}{space 3}0.001{col 55}{space 4} 1.268925{col 68}{space 3} 2.431154
+{txt}{space 8}_cons {c |}{col 15}{res}{space 2} .0128754{col 27}{space 2} .0006528{col 38}{space 1}  -85.84{col 47}{space 3}0.000{col 55}{space 4} .0116574{col 68}{space 3} .0142206
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit cardio i.drink_alcohol i.age i.dhh_sex, or 
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-2313.1908}  
+Iteration 1:{space 3}log likelihood = {res:-2174.2247}  
+Iteration 2:{space 3}log likelihood = {res:-2119.0033}  
+Iteration 3:{space 3}log likelihood = {res:-2118.5156}  
+Iteration 4:{space 3}log likelihood = {res:-2118.5152}  
+Iteration 5:{space 3}log likelihood = {res:-2118.5152}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}    32,849
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}    389.35
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-2118.5152{txt}{col 49}Pseudo R2{col 67}= {res}    0.0842
+
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           cardio{col 19}{c |} Odds Ratio{col 31}   Std. Err.{col 43}      z{col 51}   P>|z|{col 59}     [95% Con{col 72}f. Interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}drink_alcohol {c |}
+drank (everyday)  {c |}{col 19}{res}{space 2} 1.073219{col 31}{space 2} .1804567{col 42}{space 1}    0.42{col 51}{space 3}0.674{col 59}{space 4} .7719031{col 72}{space 3} 1.492155
+{txt}{space 17} {c |}
+{space 14}age {c |}
+{space 2}35 to 49 years  {c |}{col 19}{res}{space 2}  1.46821{col 31}{space 2} .2882573{col 42}{space 1}    1.96{col 51}{space 3}0.050{col 59}{space 4} .9992399{col 72}{space 3} 2.157281
+{txt}{space 2}50 to 64 years  {c |}{col 19}{res}{space 2} 6.991552{col 31}{space 2} 1.154649{col 42}{space 1}   11.78{col 51}{space 3}0.000{col 59}{space 4} 5.058228{col 72}{space 3} 9.663818
+{txt}{space 17} {c |}
+{space 10}dhh_sex {c |}
+{space 10}Female  {c |}{col 19}{res}{space 2} .3739639{col 31}{space 2}  .040408{col 42}{space 1}   -9.10{col 51}{space 3}0.000{col 59}{space 4}   .30259{col 72}{space 3} .4621732
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2} .0061186{col 31}{space 2} .0009662{col 42}{space 1}  -32.27{col 51}{space 3}0.000{col 59}{space 4} .0044899{col 72}{space 3}  .008338
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. *************************** Calculate E values *****************************
+. 
+. tab1 drink_alcohol cardio 
+
+{res}-> tabulation of drink_alcohol  
+
+       {txt}drink_alcohol {c |}      Freq.     Percent        Cum.
+{hline 21}{c +}{hline 35}
+drank (not everyday) {c |}{res}     30,995       94.36       94.36
+{txt}    drank (everyday) {c |}{res}      1,854        5.64      100.00
+{txt}{hline 21}{c +}{hline 35}
+               Total {c |}{res}     32,849      100.00
+
+-> tabulation of cardio  
+
+ {txt}CVD status {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+ Has no CVD {c |}{res}     32,414       98.68       98.68
+{txt}    Has CVD {c |}{res}        435        1.32      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     32,849      100.00
+{txt}
+{com}. 
+. cc drink_alcohol cardio
+                                                        {txt} Proportion
+{col 18}{c |}   Exposed   Unexposed  {c |}      Total     Exposed
+{hline 17}{c +}{hline 24}{c +}{hline 24}
+           Cases {c |} {res}       41        1813{txt}  {c |}  {res}     1854       0.0221
+        {txt}Controls {c |} {res}      394       30601{txt}  {c |}  {res}    30995       0.0127
+{txt}{hline 17}{c +}{hline 24}{c +}{hline 24}
+{col 12}Total {c |} {res}      435       32414{txt}  {c |}  {res}    32849       0.0132
+{txt}{col 18}{c |}{col 43}{c |}
+{col 18}{c |}      Point estimate    {c |}    [95% Conf. Interval]
+{col 18}{c LT}{hline 24}{c +}{hline 24}
+      Odds ratio {c |} {res}{col 27} 1.756408{txt}{col 43}{c |}   {res} 1.236701    2.436093{txt} (exact)
+ Attr. frac. ex. {c |} {res}{col 27} .4306563{txt}{col 43}{c |}   {res} .1913973    .5895066{txt} (exact)
+ Attr. frac. pop {c |} {res}{col 27} .0095237{txt}{col 43}{c |}
+{col 18}{c BLC}{hline 24}{c BT}{hline 24}
+                               chi2(1) ={res}    11.84{txt}  Pr>chi2 ={res} 0.0006
+{txt}
+{com}. 
+. ssc install evalue 
+{txt}checking {hilite:evalue} consistency and verifying not already installed...
+all files already exist and are up to date.
+
+{com}. 
+. evalue or 1.76, lcl(1.24) ucl(2.44)
+{txt}   E-value (point estimate): {res}2.917
+{txt}   E-value (CI): {res}1.786
+{txt}
+{com}. 
+. 
+. 
+. 
+{txt}end of do-file
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}D:\UofC\Semester\Winter 2026\MDCH 740\Assignment\Final Analysis Plan\Supplementary files\Hossain_finalreport.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}14 Apr 2026, 16:24:58
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
